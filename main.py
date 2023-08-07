@@ -196,7 +196,8 @@ def get_all_flightPlans():
 
 
 # Serve media files
-app.mount("/media", StaticFiles(directory="media"), name="media")
+directory_path = os.path.join(os.path.dirname(__file__), "media")
+app.mount("/media", StaticFiles(directory=directory_path), name="media")
 
 
 @app.get("/media/pictures/{file_name}")
