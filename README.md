@@ -45,5 +45,5 @@ You will see easily the data models involved in the different API endpoints (for
 ## Tutorial
 This is a tutorial  (in Spanish) to learn how to install the APIREST and create (and test) new ednpoints:
     
-[Tutorial on APIREST]([https://www.youtube.com/playlist?list=PLyAtSQhMsD4o3VIWiQ7xYB9dx7f-C8Ju1])     
+[Tutorial on APIREST](https://www.youtube.com/playlist?list=PLyAtSQhMsD4o3VIWiQ7xYB9dx7f-C8Ju1)     
 
