@@ -47,6 +47,6 @@ This is a tutorial  (in Spanish) to learn how to install the APIREST and create 
     
 [Tutorial on APIREST](https://www.youtube.com/playlist?list=PLyAtSQhMsD4o3VIWiQ7xYB9dx7f-C8Ju1)      
      
-[Tkinter](https://www.youtube.com/watch?v=YXPyB4XeYLA)   
+
 
 
