@@ -19,8 +19,20 @@ import paho.mqtt.client as mqtt
 
 app = FastAPI()
 connect(db="DEE", host="localhost", port=27017)
+
+'''
+Esta parte del codigo es para uso del la aplicación movil en flutter.
+Aun no sabemos cómo hacer que flutter se connecte con  MQTT. Como alternativa temporal, 
+hacemos que flutter se comunique con el autopilot service a través de la APIREST, que si que 
+puede comunicarse via MQTT.
+En el momento en que se solucione el problema de la conexión de flutter a MQTT esta parte del código
+se elmimiará'''
+
+################################################################33
+
 client = mqtt.Client(client_id="fastApi", transport='websockets')
 is_connected = False
+
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -36,29 +48,6 @@ def on_message(client, userdata, msg):
     if msg.topic == "autopilotService/WebApp/telemetryInfo":
         is_connected = True
 
-
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=422,
-        content=jsonable_encoder(
-            ErrorResponse(
-                success=False,
-                message="Validation error",
-                errors=exc.errors(),
-            )
-        ),
-    )
-
-
-@app.exception_handler(StarletteHTTPException)
-async def http_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content=jsonable_encoder(
-            ErrorResponse(success=False, message=exc.detail)
-        ),
-    )
 
 # MQTT Callbacks
 client.on_connect = on_connect
@@ -107,6 +96,34 @@ async def execute_flight_plan(plan: List[WaypointMQTT]):
     client.publish("WebApp/autopilotService/executeFlightPlan", plan_json)
     return {"message": "Flight plan published"}
 # End MQTT Callbacks
+
+###### Hasta aqui el código específico para la aplicación movil en flutter #############
+'
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=422,
+        content=jsonable_encoder(
+            ErrorResponse(
+                success=False,
+                message="Validation error",
+                errors=exc.errors(),
+            )
+        ),
+    )
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content=jsonable_encoder(
+            ErrorResponse(success=False, message=exc.detail)
+        ),
+    )
+
+
 
 @app.get("/")
 def home():
