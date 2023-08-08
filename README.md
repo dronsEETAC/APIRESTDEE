@@ -43,7 +43,7 @@ Once the service has started, navigate to http://127.0.0.1:8000 to see and try a
 You will see easily the data models involved in the different API endpoints (for instance the data model for a flight plan).    
 
 ## Tutorial
-This is a tutorial (in Spanish) to learn how to install the APIREST and create (and test) new ednpoints.
-
-
+This is a tutorial  (in Spanish) to learn how to install the APIREST and create (and test) new ednpoints:
+    
+[Tutorial on APIREST]([https://www.youtube.com/playlist?list=PLyAtSQhMsD4o3VIWiQ7xYB9dx7f-C8Ju1])     
 
